@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Workspace {
+  id            String         @id @default(uuid())
+  name          String
+  createdAt     DateTime       @default(now())
+  collaborators Collaborator[]
+  orders        Order[]
+}
+
+model Order {
+  id              String     @id @default(uuid())
+  title           String
+  description     String?
+  quantity        Int        @default(1)
+  status          String     @default("DRAFT")
+  clientName      String?
+  phoneNumber     String?
+  budget          String?
+  occasion        String?
+  deliveryAddress String?
+  price           String?
+  images          String?
+  isPublic        Boolean    @default(false)
+  isReproducible  Boolean    @default(false)
+  galleryStatus   String     @default("pending")
+  artists         OrderArtist[]
+  chat            Chat?
+  workspace       Workspace  @relation(fields: [workspaceId], references: [id])
+  workspaceId     String
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model OrderArtist {
+  id       String @id @default(uuid())
+  order    Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId  String
+  artist   Artist @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  artistId String
+
+  @@unique([orderId, artistId])
+}
+
+model Chat {
+  id            String    @id @default(uuid())
+  order         Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId       String    @unique
+  clientId      String
+  clientName    String
+  artistIds     String    @default("[]")
+  participants  String    @default("[]")
+  messages      Message[]
+  lastMessage   String?
+  lastMessageAt DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([orderId])
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  chat       Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  chatId     String
+  senderId   String
+  senderName String
+  senderRole String   @default("artist")
+  text       String?
+  imageUrl   String?
+  seenBy     String   @default("[]")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([chatId])
+  @@index([senderId])
+}
+
+model Collaborator {
+  id          String    @id @default(uuid())
+  name        String
+  email       String    @unique
+  role        String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  workspaceId String
+  joinedAt    DateTime  @default(now())
+}
+
+model Artist {
+  id              String       @id @default(uuid())
+  name            String
+  instagramId     String       @unique
+  artistCategory  String       @default("digital") // digital, non-digital, craft
+  orders          OrderArtist[]
+  signedUpAt      DateTime     @default(now())
+}
