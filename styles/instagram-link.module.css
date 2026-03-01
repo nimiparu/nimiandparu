@@ -1,0 +1,205 @@
+/**
+ * Instagram Link Component Styling
+ * Provides premium, animated styling for Instagram profile links
+ */
+
+.instagramLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(224, 148, 51, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.instagramLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.instagramLink:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(224, 148, 51, 0.4);
+}
+
+.instagramLink:hover::before {
+  left: 100%;
+}
+
+/* Inline variant */
+.instagramLinkInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  background: linear-gradient(135deg, rgba(240, 148, 51, 0.15), rgba(220, 39, 67, 0.15));
+  color: #e1306c;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 1px solid #e1306c;
+}
+
+.instagramLinkInline:hover {
+  background: linear-gradient(135deg, rgba(240, 148, 51, 0.25), rgba(220, 39, 67, 0.25));
+  color: #c13584;
+  border-color: #c13584;
+  transform: translateX(2px);
+}
+
+/* Size variants */
+.sizeSm {
+  padding: 0.5rem 0.85rem !important;
+  font-size: 0.875rem !important;
+}
+
+.sizeSm .instagramIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sizeMd {
+  padding: 0.75rem 1.25rem !important;
+  font-size: 1rem !important;
+}
+
+.sizeMd .instagramIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.sizeLg {
+  padding: 1rem 1.75rem !important;
+  font-size: 1.125rem !important;
+}
+
+.sizeLg .instagramIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Icon */
+.instagramIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.instagramLink:hover .instagramIcon {
+  transform: scale(1.1);
+}
+
+/* Username text */
+.username {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: letter-spacing 0.3s ease;
+}
+
+.instagramLink:hover .username {
+  letter-spacing: 1px;
+}
+
+/* Hover indicator */
+.hoverIndicator {
+  display: inline-flex;
+  opacity: 0;
+  transform: translate(-4px, 0);
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  margin-left: -0.5rem;
+}
+
+.instagramLink:hover .hoverIndicator {
+  opacity: 1;
+  transform: translate(2px, 0);
+}
+
+/* Card container */
+.instagramCardContainer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(224, 148, 51, 0.2);
+}
+
+.instagramCardContainer .instagramLink {
+  width: 100%;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(224, 148, 51, 0.2);
+}
+
+.instagramCardContainer .instagramLink:hover {
+  box-shadow: 0 6px 20px rgba(224, 148, 51, 0.35);
+}
+
+/* Error state */
+.instagramLinkError {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #fee;
+  color: #c33;
+  border-radius: 8px;
+  border: 1px solid #fcc;
+  font-size: 0.875rem;
+}
+
+.errorText {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Accessibility */
+.instagramLink:focus-visible,
+.instagramLinkInline:focus-visible {
+  outline: 2px solid #f09433;
+  outline-offset: 2px;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .instagramLinkInline {
+    background: linear-gradient(135deg, rgba(224, 148, 51, 0.1), rgba(220, 39, 67, 0.1));
+    border-color: #e1306c;
+  }
+
+  .instagramLinkInline:hover {
+    background: linear-gradient(135deg, rgba(224, 148, 51, 0.2), rgba(220, 39, 67, 0.2));
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .instagramLink {
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .instagramIcon {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .hoverIndicator {
+    display: none;
+  }
+}
