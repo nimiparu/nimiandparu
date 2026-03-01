@@ -1,4 +1,4 @@
-import { prisma } from '../../../lib/prisma'
+import prisma from '../../../lib/prisma'
 import { verifyChatAccess, getOrCreateChat, loadChatMessages } from '../../../lib/chat'
 
 export default async function handler(req, res) {

@@ -1,0 +1,59 @@
+
+> nimiandparu-dashboard@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Running TypeScript ...
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 3 errors:
+./pages/api/admin/gallery.js:1:1
+Module not found: Can't resolve '../../lib/prisma'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m prisma [36mfrom[39m [32m'../../lib/prisma'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m
+ [90m 3 |[39m [36mexport[39m [36mdefault[39m [36masync[39m [36mfunction[39m handler(req[33m,[39m res) {
+ [90m 4 |[39m   [36mconst[39m { status } [33m=[39m req[33m.[39mquery[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./lib/chat.js:1:1
+Export prisma doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { prisma } [36mfrom[39m [32m'./prisma'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m
+ [90m 3 |[39m [90m/**[39m
+ [90m 4 |[39m [90m * Verify user is authorized to access a chat[39m[0m
+
+The export prisma was not found in module [project]/lib/prisma.js [api] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Route:
+    ./lib/chat.js
+    ./pages/api/chat/[orderId].js
+
+
+./pages/api/chat/[orderId].js:1:1
+Export prisma doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { prisma } [36mfrom[39m [32m'../../../lib/prisma'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { verifyChatAccess[33m,[39m getOrCreateChat[33m,[39m loadChatMessages } [36mfrom[39m [32m'../../../lib/chat'[39m
+ [90m 3 |[39m
+ [90m 4 |[39m [36mexport[39m [36mdefault[39m [36masync[39m [36mfunction[39m handler(req[33m,[39m res) {[0m
+
+The export prisma was not found in module [project]/lib/prisma.js [api] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+    at <unknown> (./pages/api/admin/gallery.js:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./lib/chat.js:1:1)
+    at <unknown> (./pages/api/chat/[orderId].js:1:1)
